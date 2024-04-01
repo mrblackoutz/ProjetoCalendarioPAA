@@ -2,6 +2,7 @@
 #include <time.h>
 #include "AppointmentManagement.h"
 #include "Sorting.h"
+#include <string.h>
 #include <locale.h>
 
 void drawClock()
@@ -55,6 +56,7 @@ int main(int argc, char *argv[])
   // Setar em Pt-BR para que as acentuações sejam exibidas corretamente
   setlocale(LC_ALL, "Portuguese.UTF-8");
   int opcao;
+  char input[10]; // Buffer para armazenar a entrada do usuário
 
   // Exibindo o relógio
   drawClock();
@@ -64,8 +66,19 @@ int main(int argc, char *argv[])
     // Exibindo o menu
     drawMenu();
     printf("Escolha uma opção: ");
-    // Coletando opção do usuário
-    scanf("%d", &opcao);
+    // Coletando opção do usuário de maneira segura
+    if (fgets(input, sizeof(input), stdin))
+    {
+      // Remove qualquer new line ou carriage return no final do input
+      input[strcspn(input, "\r\n")] = 0;
+
+      if (sscanf(input, "%d", &opcao) != 1)
+      {
+        // Não era um número inteiro, limpe o input e peça novamente
+        printf("Opção inválida. Por favor, insira um número.\n");
+        continue;
+      }
+    }
     printf("____________________________________\n\n");
 
     switch (opcao)

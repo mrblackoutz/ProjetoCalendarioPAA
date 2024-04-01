@@ -14,7 +14,7 @@ typedef struct Time {
 
 typedef struct Appointment {
   Time time;
-  int duration;
+  float duration;
   int priority;
   char name[50];
   char desc[100];
@@ -32,5 +32,10 @@ void addAppointment();
  * Removes an existing appointment from the schedule.
  */
 void removeAppointment();
+
+/**
+ * Displays all appointments in the schedule.
+ */
+int readAppointmentsFromFile(Appointment appointments[], int *count)
 
 #endif // APPOINTMENT_MANAGEMENT_H
