@@ -2,20 +2,26 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "C/C++ Runner: Debug Session",
+      "name": "(gdb) Iniciar",
       "type": "cppdbg",
       "request": "launch",
+      "program": "${workspaceFolder}/main.exe",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/gustavo.siqueira/Projetos/mackenzie/dd/ProjetoCalendarioPAA",
-      "program": "c:/Users/gustavo.siqueira/Projetos/mackenzie/dd/ProjetoCalendarioPAA/build/Debug/outDebug",
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "C:/Program Files/mingw64/bin/gdb.exe",
       "setupCommands": [
         {
-          "description": "Enable pretty-printing for gdb",
+          "description": "Habilitar a reformatação automática para gdb",
           "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Definir Tipo de Desmontagem como Intel",
+          "text": "-gdb-set disassembly-flavor intel",
           "ignoreFailures": true
         }
       ]
